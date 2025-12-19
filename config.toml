@@ -1,4 +1,4 @@
-enable-magisk-update = true # set this to false if you do not want to receive updates for the module in magisk app
+enable-magisk-update = false # set this to false if you do not want to receive updates for the module in magisk app
 parallel-jobs = 1
 
 # add 'enabled = false' for not patching a specific app or remove it from the config
@@ -7,25 +7,32 @@ parallel-jobs = 1
 # you can use rvmm-config-gen to generate a config
 
 [YouTube]
-build-mode = "both"
-excluded-patches = ""
-included-patches = ""
-version = "auto"
-apkmirror-dlurl = "https://www.apkmirror.com/apk/google-inc/youtube"
-uptodown-dlurl = "https://youtube.en.uptodown.com/android"
-archive-dlurl = "https://archive.org/download/jhc-apks/apks/com.google.android.youtube"
+arch = "universal"
+apkmirror-dlurl = "https://apkmirror.com/apk/google-inc/youtube/"
+excluded-patches = "'Disable double tap actions' 'Custom branding' 'Change form factor' 'Disable rolling number animations' 'Hide timestamp' 'Exit fullscreen mode' 'Open videos fullscreen' 'Wide search bar' 'Shorts autoplay' 'Spoof app version' 'Change start page' 'Alternative thumbnails' 'Announcements' 'Enable debugging' 'Spoof device dimensions' 'Disable video codecs'"
+patcher-args = "-e 'Change header' -Ocustom=null -e 'Theme' -OdarkThemeBackgroundColor=@android:color/black -OlightThemeBackgroundColor=@android:color/white"
+
+# https://github.com/j-hc/revanced-magisk-module/issues/554
+[Music-Extended]
+app-name = "Music"
+patches-source = "inotia00/revanced-patches"
+cli-source = "inotia00/revanced-cli"
+rv-brand = "ReVanced Extended"
+build-mode = "apk"
+arch = "arm64-v8a"
+apkmirror-dlurl = "https://www.apkmirror.com/apk/google-inc/youtube-music"
+included-patches = "'Hide overlay filter' 'Hide player overlay filter' 'Disable music video in album'"
+excluded-patches = "'Hide account components' 'Enable landscape mode' 'Restore old style library shelf' 'Disable Cairo splash animation' 'Spoof app version' 'Change start page' 'Custom branding icon for YouTube Music' 'Custom branding name for YouTube Music' 'Dark theme' 'Translations for YouTube Music' 'Visual preferences icons for YouTube Music' 'Change share sheet' 'Watch history' 'Certificate spoof'"
+patcher-args = "-e 'GmsCore support' -OgmsCoreVendorGroupId=app.revanced -e 'Settings for YouTube Music' -OinsertPosition=pref_key_parent_tools -OrvxSettingsLabel=RVX"
 
 [Music]
-build-mode = "both"
-arch = "both"
+enabled = false
 apkmirror-dlurl = "https://www.apkmirror.com/apk/google-inc/youtube-music"
 uptodown-dlurl = "https://youtube-music.en.uptodown.com/android"
 archive-dlurl = "https://archive.org/download/jhc-apks/apks/com.google.android.apps.youtube.music"
 
 [GooglePhotos]
-build-mode = "both"
-arch = "both"
-version = "auto"
+enabled = false
 apkmirror-dlurl = "https://www.apkmirror.com/apk/google-inc/photos/"
 uptodown-dlurl = "https://google-photos.en.uptodown.com/android"
 archive-dlurl = "https://archive.org/download/jhc-apks/apks/com.google.android.apps.photos"
@@ -34,17 +41,6 @@ archive-dlurl = "https://archive.org/download/jhc-apks/apks/com.google.android.a
 enabled = false
 uptodown-dlurl = "https://spotify.en.uptodown.com/android"
 archive-dlurl = "https://archive.org/download/jhc-apks/apks/com.spotify.music"
-
-# https://github.com/j-hc/revanced-magisk-module/issues/554
-[Music-Extended]
-enabled = false
-app-name = "Music"
-patches-source = "inotia00/revanced-patches"
-cli-source = "inotia00/revanced-cli"
-rv-brand = "ReVanced Extended"
-build-mode = "both"
-arch = "both"
-apkmirror-dlurl = "https://www.apkmirror.com/apk/google-inc/youtube-music"
 
 [YouTube-Extended]
 enabled = false
