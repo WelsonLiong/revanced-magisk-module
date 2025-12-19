@@ -7,7 +7,6 @@ parallel-jobs = 1
 # you can use rvmm-config-gen to generate a config
 
 [YouTube]
-arch = "universal"
 apkmirror-dlurl = "https://apkmirror.com/apk/google-inc/youtube/"
 excluded-patches = "'Disable double tap actions' 'Custom branding' 'Change form factor' 'Disable rolling number animations' 'Hide timestamp' 'Exit fullscreen mode' 'Open videos fullscreen' 'Wide search bar' 'Shorts autoplay' 'Spoof app version' 'Change start page' 'Alternative thumbnails' 'Announcements' 'Enable debugging' 'Spoof device dimensions' 'Disable video codecs'"
 patcher-args = "-e 'Change header' -Ocustom=null -e 'Theme' -OdarkThemeBackgroundColor=@android:color/black -OlightThemeBackgroundColor=@android:color/white"
