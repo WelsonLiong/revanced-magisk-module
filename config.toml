@@ -25,6 +25,7 @@ excluded-patches = "'Hide account components' 'Enable landscape mode' 'Restore o
 patcher-args = "-e 'GmsCore support' -OgmsCoreVendorGroupId=app.revanced -e 'Settings for YouTube Music' -OinsertPosition=pref_key_parent_tools -OrvxSettingsLabel=RVX"
 
 [Tiktok]
+app-name = "Tiktok"
 enabled = true
 apkmirror-dlurl = "https://apkmirror.com/apk/tiktok-pte-ltd/tik-tok-including-musical-ly/"
 arch = "arm64-v8a"
