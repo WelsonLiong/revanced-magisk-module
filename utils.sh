@@ -609,11 +609,14 @@ build_rv() {
 			fi
 		fi
 		if [ "$build_mode" = apk ]; then
-			local apk_output="${BUILD_DIR}/${app_name_l}-${rv_brand_f}-v${version_f}-${arch_f}.apk"
-			mv -f "$patched_apk" "$apk_output"
-			pr "Built ${table} (non-root): '${apk_output}'"
-			continue
-		fi
+            local rv_patches_ver="${rv_patches_jar##*-}"
+            rv_patches_ver="${rv_patches_ver%.*}" 
+            local apk_output="${BUILD_DIR}/${app_name_l}-${rv_brand_f}-v${version_f}-patches-${rv_patches_ver}-${arch_f}.apk"
+            
+            mv -f "$patched_apk" "$apk_output"
+            pr "Built ${table} (non-root): '${apk_output}'"
+            continue
+        fi
 		local base_template
 		base_template=$(mktemp -d -p "$TEMP_DIR")
 		cp -a $MODULE_TEMPLATE_DIR/. "$base_template"
