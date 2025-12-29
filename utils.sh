@@ -610,17 +610,6 @@ build_rv() {
 		fi
 		if [ "$build_mode" = apk ]; then
 			local apk_output="${BUILD_DIR}/${app_name_l}-${rv_brand_f}-v${version_f}-${arch_f}.apk"
-			
-			if [ "$app_name" = "YouTube" ]; then
-				apk_output="${BUILD_DIR}/youtube.apk"
-			elif [ "$app_name" = "Music" ]; then
-				apk_output="${BUILD_DIR}/music.apk"
-			elif [ "$app_name" = "TikTok" ]; then
-				apk_output="${BUILD_DIR}/tiktok.apk"
-			else
-				apk_output="${BUILD_DIR}/${app_name_l}-${rv_brand_f}-v${version_f}-${arch_f}.apk"
-			fi
-
 			mv -f "$patched_apk" "$apk_output"
 			pr "Built ${table} (non-root): '${apk_output}'"
 			continue
